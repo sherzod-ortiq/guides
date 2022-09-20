@@ -1,0 +1,17 @@
+FROM ruby:2.5.8
+
+# FROM ruby:2.5.8-alpine
+
+WORKDIR '/app'
+
+# For solargraph gem
+RUN gem install nokogiri -v 1.12.5
+
+# For VS Code Ruby solargraph extension
+RUN gem install solargraph -v 0.39.13
+
+COPY ./Gemfile ./
+
+COPY ./Gemfile.lock ./
+
+RUN bundle install
